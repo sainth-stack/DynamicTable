@@ -39,34 +39,60 @@ const TableRowItem = ({ row }) => {
   const handleExpand = () => {
     setOpen(!open);
   };
+  const styles = {
+    tableRow: {
+      height: '0px', 
+    },
+  };
   return (
     <React.Fragment>
-     
-      <TableRow sx={{ height: '10px' }}>
-        <TableCell>
-          <IconButton aria-label="expand row" size="small" onClick={handleExpand}>
-            {open ? <KeyboardArrowDown /> : <KeyboardArrowRight />}
-          </IconButton>
-        </TableCell>
-        <TableCell>{row.name}</TableCell>
-      </TableRow>
-      {row.children && (
-        <TableRow s>
-          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={2}>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <Box sx={{ margin: 1 }}>
-                <Table size="small" aria-label="purchases">
-                  <TableBody>
+    <TableRow style={styles.tableRow}>
+      <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} >
+        <IconButton aria-label="expand row" size="small" onClick={handleExpand}>
+          {open ? <KeyboardArrowDown /> : <KeyboardArrowRight />}
+        </IconButton>
+      </TableCell>
+      <TableCell >{row.name}</TableCell>
+      <TableCell>{row.id}</TableCell>
+      <TableCell>{row.id}</TableCell>
+    </TableRow>
+    {row.children && (
+      row.children.map((child) => (
+        <React.Fragment key={child.id}>
+          <TableRow style={styles.tableRow}>
+            <TableCell style={{ paddingBottom: 0, paddingTop: 0}} colSpan={6}>
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                  <Table size="small" aria-label="purchases">
+                    {/* <TableBody>
+                      <TableRow >
+                        <TableCell>{child.name}</TableCell>
+                        <TableCell>{child.id}</TableCell>
+                        <TableCell>{child.id}</TableCell>
+                      </TableRow>
+                      {child.children && (
+                        child.children.map((subchild) => (
+                          <TableRow key={subchild.id}>
+                            <TableCell>{subchild.name}</TableCell>
+                            <TableCell>{subchild.id}</TableCell>
+                            <TableCell>{subchild.id}</TableCell>
+                          </TableRow>
+                        ))
+                      )}
+                    </TableBody> */}
+                       <TableBody>
                     {row.children.map((child) => (
                       <TableRowItem key={child.id} row={child} />
                     ))}
                   </TableBody>
-                </Table>
-              </Box>
-            </Collapse>
-          </TableCell>
-        </TableRow>)}
-    </React.Fragment>
+                  </Table>
+              </Collapse>
+            </TableCell>
+          </TableRow>
+        </React.Fragment>
+      ))
+    )}
+  </React.Fragment>
+  
   );
 };
 

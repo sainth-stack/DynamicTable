@@ -262,33 +262,49 @@ export default function StickyHeadTable() {
    const tabledata = [
       {
         id: 1,
-        name: 'Parent 1',
+        name: 'A',
         children: [
           {
-            id: 101,
-            name: 'Child 1.1',
-            children: [{ id: 10101, name: 'Subchild 1.1.1' }, { id: 10102, name: 'Subchild 1.1.2' }],
+           id:23,
+            name: 'Montair',
+            children: [{ id: 10101, name: 'Cardio' }, { id: 10102, name: 'Chest' }],
           },
           {
-            id: 102,
-            name: 'Child 1.2',
-            children: [{ id: 10201, name: 'Subchild 1.2.1' }, { id: 10202, name: 'Subchild 1.2.2' }],
+            id:21,
+            name: 'Team 4',
+            children: [{ id: 10201, name: 'CP' }, { id: 10202, name: 'ENT' }],
           },
         ],
       },
       {
         id: 2,
-        name: 'Parent 2',
+        name: 'A Plus',
         children: [
           {
-            id: 201,
-            name: 'Child 2.1',
-            children: [{ id: 20101, name: 'Subchild 2.1.1' }, { id: 20102, name: 'Subchild 2.1.2' }],
+            id:21,
+            name: 'Team 4',
+            children: [{ id: 10101, name: 'Cardio' }, { id: 10102, name: 'Chest' }],
           },
           {
-            id: 202,
-            name: 'Child 2.2',
-            children: [{ id: 20201, name: 'Subchild 2.2.1' }, { id: 20202, name: 'Subchild 2.2.2' }],
+            id:25,
+            name: 'Team 4',
+            children: [{ id: 10201, name: 'CP' }, { id: 10202, name: 'ENT' }],
+          },
+        ],
+      },
+      {
+        id: 3,
+        name: 'B',
+        children: [
+          {
+            id:21,
+            name: 'Team 4',
+            children: [{ id: 10101, name: 'Cardio' }, { id: 10102, name: 'Chest' }],
+          },
+          {
+         
+            name: 'Team 4',
+            children: [{ id: 10201, name: 'CP' }, { id: 10202, name: 'ENT' }],
           },
         ],
       },
@@ -298,10 +314,10 @@ export default function StickyHeadTable() {
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
     <Grid container display={'flex'} justifyContent={'space-between'} m={2}>
-      <Grid item m={2}>
+      <Grid item >
         <Typography fontWeight={700} fontSize={'22px'}>Data Visualization</Typography>
       </Grid>
-      <Grid item m={2} mr={4}>
+      <Grid item  mr={4}>
       <input
         type="file"
         accept=".xlsx"
@@ -325,9 +341,9 @@ export default function StickyHeadTable() {
       </Grid>
 
     </Grid>
-    <Grid container display={'flex'} gap={12}>
+    <Grid container display={'flex'} gap={3.8}>
     <Grid item>
-  <FormControl sx={{ m: 1, width: 300 }}>
+  <FormControl sx={{ m: 1, width: 350 }}>
     <InputLabel id="segment-leadership-label">Segment Leadership</InputLabel>
     <Select
       labelId="segment-leadership-label"
@@ -349,7 +365,7 @@ export default function StickyHeadTable() {
   </FormControl>
 </Grid>
 <Grid item>
-  <FormControl sx={{ m: 1, width: 300 }}>
+  <FormControl sx={{ m: 1, width: 350 }}>
     <InputLabel id="status-label">Status</InputLabel>
     <Select
       labelId="status-label"
@@ -371,7 +387,7 @@ export default function StickyHeadTable() {
   </FormControl>
 </Grid>
 <Grid item>
-  <FormControl sx={{ m: 1, width: 300 }}>
+  <FormControl sx={{ m: 1, width: 350 }}>
     <InputLabel id="brand-label">Brand</InputLabel>
     <Select
       labelId="brand-label"
@@ -394,7 +410,7 @@ export default function StickyHeadTable() {
 </Grid>
 
       <Grid item>
-      <FormControl sx={{ m: 1, width: 300 }}>
+      <FormControl sx={{ m: 1, width: 350 }}>
     <InputLabel id="brand-label">Row Filter</InputLabel>
     <Select
       labelId="brand-label"
@@ -416,22 +432,25 @@ export default function StickyHeadTable() {
   </FormControl>
       </Grid>
     </Grid>
-    <div style={{ height: '500px', overflowY: 'auto' }}>
+    <div style={{ height: '530px', overflowY: 'auto',margin:2 }}>
     <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead sx={{ backgroundColor: '#f0f0f0', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
-          <TableRow>
-            <TableCell />
-            <TableCell sx={{fontWeight:600,fontSize:'18px'}}>Name</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {tabledata.map((row) => (
-            <TableRowItem key={row.id} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+  <Table aria-label="collapsible table" style={{ borderCollapse: 'collapse' }}>
+    <TableHead sx={{ backgroundColor: '#f0f0f0', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
+      <TableRow>
+        <TableCell />
+        <TableCell sx={{ fontWeight: 600, fontSize: '18px', border: '1px solid #dddddd' }}>Row Label</TableCell>
+        <TableCell sx={{ fontWeight: 600, fontSize: '18px', border: '1px solid #dddddd' }}>Nov-23</TableCell>
+        <TableCell sx={{ fontWeight: 600, fontSize: '18px', border: '1px solid #dddddd' }}>Dec-23</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {tabledata.map((row) => (
+        <TableRowItem key={row.id} row={row} />
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>
+
     </div>
     <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
