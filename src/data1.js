@@ -8,7 +8,7 @@ export const data=[
         "TM HQ": "NORTH DELHI",
         "TM ID": "114534",
         "TM Name": "Ajay Kumar",
-        "Month": "Nov-23",
+        "Month": "Oct-23",
         "DRCODE": "13084405",
         "MSL CODE": "CIP608562",
         "DRNAME": "ANUPAM  PRAKASH",

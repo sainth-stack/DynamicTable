@@ -14,18 +14,24 @@ function App() {
   const [state, setState] = useState([]);
 
   return (
-    <PivotTableUI
-      data={data}
-      renderers={Object.assign({}, TableRenderers, PlotlyRenderers)}
-      onChange={(s) => {
-        setState(s);
-      }}
-      rows={['Spl']}
-      cols={['Month']}
-      vals={['Qty']}
-      aggregatorName= {['Sum']}
-      {...state}
-    />
+    <div style={{ width: '100%', height: '80vh' }}> {/* Adjust width and height based on your needs */}
+      <PivotTableUI
+        data={data}
+        renderers={Object.assign({}, TableRenderers, PlotlyRenderers)}
+        onChange={(s) => {
+          setState(s);
+        }}
+        rows={['Spl']}
+        cols={['Month']}
+        vals={['Qty']}
+        aggregatorName={['Sum']}
+        filters={[
+          { name: 'Brand', type: 'dropdown' },
+        ]}
+        hiddenAttributes={['Status 2k', 'Status 5k']}
+        {...state}
+      />
+    </div>
   );
 }
 
