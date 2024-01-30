@@ -22,7 +22,8 @@ function App() {
       }}
       rows={['Spl']}
       cols={['Month']}
-      vals={[{ name: 'Qty', aggregator: 'Count' }]}
+      vals={['Qty']}
+      aggregatorName= {['Sum']}
       {...state}
     />
   );
